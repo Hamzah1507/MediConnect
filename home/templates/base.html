@@ -1,0 +1,23 @@
+<body style="background-color: #FFF0E6; margin: 0; font-family: Arial, sans-serif;">
+
+    <nav style="display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; background: #EFECEC; box-shadow: 0 2px 5px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000;">
+        <div style="font-size: 1.5rem; font-weight: bold; color: #FF5A1F;">
+            MediConnect.
+        </div>
+        <div>
+            <a href="/" style="margin: 0 15px; text-decoration: none; color: #333; font-weight: 500;">Home</a>
+            <a href="/menu/" style="margin: 0 15px; text-decoration: none; color: #333; font-weight: 500;">Menu</a>
+            <a href="/contact/" style="margin: 0 15px; text-decoration: none; color: #333; font-weight: 500;">Contact Us</a>
+        </div>
+        <div>
+            <a href="/search/" style="margin-right: 20px; font-size: 18px; color: #333; text-decoration: none;">🔍</a>
+            <a href="/cart/" style="margin-right: 20px; font-size: 18px; color: #333; text-decoration: none;">🛒</a>
+            <a href="/signin/" style="border: 2px solid #FF5A1F; padding: 8px 15px; border-radius: 25px; color: #FF5A1F; text-decoration: none; font-weight: bold; transition: background-color 0.3s, color 0.3s;">
+                Sign Up
+            </a>
+        </div>
+    </nav>
+
+    {% block content %}
+    {% endblock %}
+</body>

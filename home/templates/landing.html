@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+MediConnect | Online Pharmacy
+{% endblock %}
+
+{% block content %}
+<style>
+    /* Responsive Hero Section */
+    .hero-container {
+        display: flex;
+        flex-direction: row;
+        gap: 30px;
+        align-items: center;
+        justify-content: space-between;
+        padding: 50px 40px;
+    }
+
+    /* Mobile styles - stack content */
+    @media (max-width: 768px) {
+        .hero-container {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .hero-image-container {
+            margin-top: 30px;
+        }
+    }
+</style>
+
+<section style="background: #FF5A1F; color: white; padding: 50px; border-radius: 15px; margin: 40px;">
+    <div class="hero-container">
+        <div style="max-width: 50%;">
+            <h2 style="font-size: 2.5rem; margin-bottom: 20px; font-weight: 700;">Order your<br>Medicine from here</h2>
+            <p style="font-size: 1.1rem; margin-bottom: 30px; line-height: 1.6;">
+                Your trusted partner for online medicine shopping. Browse a wide selection, order effortlessly, 
+                and get your essentials delivered to your home quickly and securely—because your health matters.
+            </p>
+            <a href="/appointments/" style="background: white; color: #FF5A1F; padding: 12px 25px; 
+                text-decoration: none; font-weight: bold; border-radius: 25px; transition: background-color 0.3s, color 0.3s;">
+                Order Now
+            </a>
+        </div>
+        
+        <div class="hero-image-container" style="flex: 1; display: flex; justify-content: center;">
+            <img src="{% static 'images/medicine-cart.png' %}" alt="Medicine Cart"
+                style="max-width: 400px; height: auto; border-radius: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); object-fit: contain;">
+        </div>
+    </div>
+</section>
+{% endblock %}
