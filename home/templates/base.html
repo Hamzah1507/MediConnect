@@ -1,23 +1,290 @@
-<body style="background-color: #FFF0E6; margin: 0; font-family: Arial, sans-serif;">
+<!DOCTYPE html>
+<html lang="en">
 
-    <nav style="display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; background: #EFECEC; box-shadow: 0 2px 5px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000;">
-        <div style="font-size: 1.5rem; font-weight: bold; color: #FF5A1F;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}MediConnect{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* === Styles to hide the scrollbar === */
+        html {
+            /* For Firefox */
+            scrollbar-width: none;
+        }
+
+        /* For Chrome, Safari, and other WebKit browsers */
+        ::-webkit-scrollbar {
+            display: none;
+        }
+        
+        /* Social media icons inside circular gray borders */
+        .footer-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border: 2px solid gray;
+            border-radius: 50%;
+            color: white;
+            font-size: 18px;
+            text-decoration: none;
+        }
+
+        .footer-icons a:hover {
+            background-color: gray;
+            color: #fff;
+            transform: scale(1.1);
+        }
+        
+        /* Apply the new font to the body */
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            margin: 0;
+        }
+
+        /* === NEW CSS FOR SEARCH BAR === */
+        .search-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+        }
+
+        .search-input {
+            border: 1px solid #ddd;
+            border-radius: 25px;
+            padding: 8px 15px;
+            width: 250px;
+            transition: all 0.3s;
+            font-size: 14px;
+            outline: none;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .search-input:focus {
+            border-color: #FF5A1F;
+            box-shadow: 0 0 5px rgba(255, 90, 31, 0.5);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 15px;
+            color: #888;
+            cursor: pointer;
+        }
+
+        .search-suggestions {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-top: none;
+            border-radius: 0 0 8px 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            z-index: 1001;
+            max-height: 300px;
+            overflow-y: auto;
+            display: none;
+        }
+        
+        .search-suggestions a {
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            text-decoration: none;
+            color: #333;
+            transition: background-color 0.2s;
+            border-bottom: 1px solid #eee;
+        }
+
+        .search-suggestions a:hover {
+            background-color: #f5f5f5;
+        }
+
+        .search-suggestions img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body style="background-color: #FFF0E6;">
+
+    <nav
+        style="display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; background: #EFECEC; box-shadow: 0 2px 5px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000;">
+        <div style="font-size: 1.5rem; font-weight: bold; color: #FF5A1F; cursor: pointer;">
             MediConnect.
         </div>
         <div>
-            <a href="/" style="margin: 0 15px; text-decoration: none; color: #333; font-weight: 500;">Home</a>
-            <a href="/menu/" style="margin: 0 15px; text-decoration: none; color: #333; font-weight: 500;">Menu</a>
-            <a href="/contact/" style="margin: 0 15px; text-decoration: none; color: #333; font-weight: 500;">Contact Us</a>
+            <a href="{% url 'home' %}" style="margin: 0 15px; text-decoration: none; color: #333; font-weight: 500;">Home</a>
+            <a href="{% url 'home' %}#categories" class="smooth-scroll" style="margin: 0 15px; text-decoration: none; color: #333; font-weight: 500;">Menu</a>
+            <a href="#contact" class="smooth-scroll" style="margin: 0 15px; text-decoration: none; color: #333; font-weight: 500;">Contact Us</a>
         </div>
-        <div>
-            <a href="/search/" style="margin-right: 20px; font-size: 18px; color: #333; text-decoration: none;">🔍</a>
-            <a href="/cart/" style="margin-right: 20px; font-size: 18px; color: #333; text-decoration: none;">🛒</a>
-            <a href="/signin/" style="border: 2px solid #FF5A1F; padding: 8px 15px; border-radius: 25px; color: #FF5A1F; text-decoration: none; font-weight: bold; transition: background-color 0.3s, color 0.3s;">
-                Sign Up
-            </a>
+        <div style="display: flex; align-items: center;">
+            <div class="search-container">
+                <input type="text" id="search-input" class="search-input" placeholder="Search medicines...">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                <div id="suggestions-box" class="search-suggestions"></div>
+            </div>
+            
+            <a href="{% url 'cart' %}" style="margin-right: 20px; font-size: 18px; color: #333; text-decoration: none;">🛒</a>
+            {% if user.is_authenticated %}
+                <a href="{% url 'logout' %}"
+                    style="border: 2px solid #FF5A1F; padding: 8px 15px; border-radius: 25px; color: #FF5A1F; text-decoration: none; font-weight: bold;">
+                    Logout
+                </a>
+            {% else %}
+                <a href="{% url 'signup' %}"
+                    style="border: 2px solid #FF5A1F; padding: 8px 15px; border-radius: 25px; color: #FF5A1F; text-decoration: none; font-weight: bold;">
+                    Sign Up
+                </a>
+            {% endif %}
         </div>
     </nav>
 
     {% block content %}
     {% endblock %}
+
+    <footer id="contact" style="background-color: #2c2c2c; color: white; padding: 50px 20px; margin-top: 50px;">
+        <div
+            style="display: flex; flex-wrap: wrap; justify-content: space-between; max-width: 1200px; margin: auto; gap: 30px;">
+
+            <div style="flex: 1; min-width: 250px;">
+                <h2 style="color: #FF5A1F; font-size: 1.8rem; font-weight: bold;">MediConnect.</h2>
+                <p style="color: #bbb; margin: 15px 0; line-height: 1.6;">
+                    MediConnect helps you easily browse and order medicines online.
+                    Get quick order confirmation with reliable service and a seamless experience.
+                </p>
+                <div style="margin-top: 20px; display: flex; gap: 15px;" class="footer-icons">
+                    <a href="https://facebook.com" target="_blank">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://twitter.com" target="_blank">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://linkedin.com" target="_blank">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div style="flex: 1; min-width: 200px;">
+                <h3 style="font-weight: 600; margin-bottom: 15px;">COMPANY</h3>
+                <ul style="list-style: none; padding: 0; margin: 0; color: #bbb;">
+                    <li><a href="{% url 'home' %}" style="color: #bbb; text-decoration: none;">Home</a></li>
+                    <li><a href="/about/" style="color: #bbb; text-decoration: none;">About Us</a></li>
+                    <li><a href="/delivery/" style="color: #bbb; text-decoration: none;">Delivery</a></li>
+                    <li><a href="/privacy/" style="color: #bbb; text-decoration: none;">Privacy Policy</a></li>
+                </ul>
+            </div>
+
+            <div style="flex: 1; min-width: 200px;">
+                <h3 style="font-weight: 600; margin-bottom: 15px;">GET IN TOUCH</h3>
+                <p style="color: #bbb; margin: 5px 0;">+91-921-221-3450</p>
+                <p style="color: #bbb; margin: 5px 0;">contact@mediconnect.com</p>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px; border-top: 1px solid #444; padding-top: 20px; color: #aaa;">
+            Copyright © 2025 MediConnect.com - All Rights Reserved.
+        </div>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scrolling logic
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // === NEW JAVASCRIPT FOR SEARCH BAR ===
+            const searchInput = document.getElementById('search-input');
+            const suggestionsBox = document.getElementById('suggestions-box');
+            const allMedicineCards = document.querySelectorAll('.medicine-card');
+
+            // Function to show/hide medicines on the page
+            function showMedicine(name) {
+                allMedicineCards.forEach(card => {
+                    const medicineName = card.querySelector('h3').textContent.trim();
+                    if (medicineName === name) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            }
+
+            // Function to show all medicines again
+            function showAllMedicines() {
+                allMedicineCards.forEach(card => {
+                    card.style.display = 'flex';
+                });
+            }
+            
+            let debounceTimer;
+
+            searchInput.addEventListener('input', function() {
+                clearTimeout(debounceTimer);
+                const query = this.value;
+
+                if (query.length > 0) {
+                    debounceTimer = setTimeout(() => {
+                        fetch(`{% url 'search' %}?q=${query}`)
+                            .then(response => response.json())
+                            .then(data => {
+                                displaySuggestions(data.results);
+                            });
+                    }, 300);
+                } else {
+                    suggestionsBox.style.display = 'none';
+                    showAllMedicines(); // Show all medicines if search bar is empty
+                }
+            });
+
+            function displaySuggestions(results) {
+                if (results.length === 0) {
+                    suggestionsBox.style.display = 'none';
+                    return;
+                }
+
+                suggestionsBox.innerHTML = '';
+                results.forEach(result => {
+                    const link = document.createElement('a');
+                    link.href = '#'; // We handle the click with JS instead of redirecting
+                    link.innerHTML = `
+                        <img src="${result.image_url}" alt="${result.name}">
+                        <span>${result.name}</span>
+                    `;
+                    link.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        showMedicine(result.name);
+                        suggestionsBox.style.display = 'none';
+                        searchInput.value = ''; // Clear search bar
+                    });
+                    suggestionsBox.appendChild(link);
+                });
+                suggestionsBox.style.display = 'block';
+            }
+        });
+    </script>
 </body>
+
+</html>

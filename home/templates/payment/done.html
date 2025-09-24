@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Payment Success (Test Mode){% endblock %}
+{% block content %}
+<div class="container text-center py-5">
+    <h2 style="color: green;">✅ Payment Successful!</h2>
+    <p class="lead">Your order has been confirmed and your cart has been cleared.</p>
+    <p>Thank you for successfully integrating and testing MediConnect's payment gateway.</p>
+    <a href="{% url 'home' %}" class="btn btn-primary mt-4">Continue Shopping</a>
+</div>
+{% endblock %}

@@ -1,0 +1,311 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Your Cart - MediConnect{% endblock %}
+
+{% block content %}
+<style>
+    /* -------------------------------------
+       CSS STYLES FOR VISUAL ALIGNMENT
+       ------------------------------------- */
+    .cart-item-card {
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        background-color: white;
+        padding: 20px;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center; 
+        justify-content: space-between; 
+    }
+
+    .cart-item-card img {
+        width: 100px; 
+        height: 100px;
+        object-fit: contain;
+        border-radius: 8px;
+        margin-right: 25px; 
+    }
+
+    .cart-item-details {
+        flex-grow: 1;
+        display: flex; 
+        flex-direction: column;
+    }
+    
+    .cart-item-details h4 {
+        font-weight: 700; 
+        color: #333;
+        margin-bottom: 5px;
+    }
+
+    .cart-detail-row {
+        display: flex;
+        align-items: center;
+        gap: 35px; 
+        margin-top: 5px;
+    }
+
+    .cart-detail-row p {
+        margin: 0;
+        color: #666;
+        white-space: nowrap; 
+    }
+
+    .cart-detail-row .total-price {
+        font-weight: bold;
+        color: #FF5A1F;
+    }
+
+    /* Styles for quantity controls */
+    .quantity-controls {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        margin-top: -3px; 
+    }
+    .quantity-controls button {
+        background: #f8f8f8;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 5px 10px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background-color 0.2s;
+    }
+    .quantity-controls button:hover {
+        background-color: #e0e0e0;
+    }
+    .quantity-display {
+        font-weight: bold;
+        padding: 0 10px;
+        color: #333;
+    }
+    
+    .remove-btn {
+        background-color: #f44336;
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 25px;
+        font-weight: bold;
+        text-decoration: none;
+        transition: background-color 0.3s;
+        min-width: 100px; 
+        text-align: center;
+    }
+
+    .remove-btn:hover {
+        background-color: #d32f2f;
+        color: white;
+    }
+
+    /* Styles for the summary block and button alignment */
+    .cart-summary {
+        border-top: 3px solid #FF5A1F; 
+        padding: 30px 0;
+        margin-top: 40px;
+        text-align: center; 
+        max-width: 800px; 
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .grand-total {
+        font-size: 2rem; 
+        font-weight: bold;
+        color: #1a1a1a;
+        margin-bottom: 25px;
+        display: flex;
+        justify-content: flex-end; 
+        gap: 20px;
+        width: 100%;
+        max-width: 400px; 
+        margin: 0 auto 30px auto; 
+    }
+
+    .grand-total .total-label {
+        font-weight: normal; 
+        color: #333;
+    }
+
+    .grand-total .total-value {
+        color: #FF5A1F;
+    }
+
+    .confirm-order-btn {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 12px 30px;
+        border-radius: 25px;
+        font-size: 1.1rem;
+        font-weight: bold;
+        text-decoration: none;
+        transition: background-color 0.3s;
+        cursor: pointer;
+        display: inline-block; 
+        margin-top: 15px; 
+    }
+
+    .confirm-order-btn:hover {
+        background-color: #388e3c;
+    }
+
+    /* Basic responsiveness */
+    @media (max-width: 768px) {
+        .cart-item-card {
+            flex-direction: column;
+            text-align: center;
+        }
+        .cart-item-card img {
+            margin-right: 0;
+            margin-bottom: 15px;
+        }
+        .cart-item-details {
+            width: 100%;
+            align-items: center;
+        }
+        .cart-detail-row {
+            flex-direction: column;
+            gap: 5px;
+        }
+        .grand-total {
+             flex-direction: column;
+             align-items: center;
+             gap: 10px;
+        }
+    }
+</style>
+
+<div class="container py-5">
+    <h2 class="section-heading mb-5" style="text-align: center;">Your Shopping Cart</h2>
+
+    {% if cart_items %}
+        <div class="row" style="max-width: 800px; margin: 0 auto;">
+            {% for item in cart_items %}
+            <div class="col-12">
+                <div class="cart-item-card" data-cart-item-id="{{ item.id }}">
+                    
+                    <div style="flex-shrink: 0;">
+                        {% if item.medicine.image %}
+                            <img src="{{ item.medicine.image.url }}" alt="{{ item.medicine.name }}">
+                        {% else %}
+                            <img src="{% static 'images/no-image.png' %}" alt="No image">
+                        {% endif %}
+                    </div>
+                    
+                    <div class="cart-item-details">
+                        <h4>{{ item.medicine.name }}</h4>
+                        <div class="cart-detail-row">
+                            <p>Price: ₹{{ item.medicine.price }}</p>
+                            
+                            <div class="quantity-controls">
+                                <button class="decrease-quantity" data-item-id="{{ item.id }}" data-action="decrease">-</button>
+                                <span class="quantity-display" id="quantity-{{ item.id }}">{{ item.quantity }}</span>
+                                <button class="increase-quantity" data-item-id="{{ item.id }}" data-action="increase">+</button>
+                            </div>
+                            <p class="total-price">Subtotal: ₹<span id="subtotal-{{ item.id }}">{{ item.total_price }}</span></p>
+                        </div>
+                    </div>
+                    
+                    <div style="flex-shrink: 0; margin-left: 20px;">
+                        <a href="{% url 'remove_from_cart' item.id %}" class="remove-btn" id="remove-btn-{{ item.id }}">Remove</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="cart-summary">
+            <div class="grand-total">
+                <div class="total-label">Order Total:</div>
+                <span class="total-value" id="grand-total-amount">₹{{ total }}</span>
+            </div>
+            
+            <a href="{% url 'process_payment' total=total|stringformat:"s" %}" class="confirm-order-btn">
+                Proceed to Pay
+            </a>
+        </div>
+    {% else %}
+        <div class="text-center">
+            <p class="section-text">Your cart is empty.</p>
+            <p><a href="{% url 'home' %}" style="color: #FF5A1F;">Continue Shopping</a></p>
+        </div>
+    {% endif %}
+</div>
+
+<script>
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    const csrftoken = getCookie('csrftoken');
+
+    document.querySelectorAll('.increase-quantity, .decrease-quantity').forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const itemId = this.dataset.itemId;
+            const action = this.dataset.action;
+            const itemElement = document.querySelector(`.cart-item-card[data-cart-item-id="${itemId}"]`);
+            
+            fetch("{% url 'update_cart_quantity_ajax' %}", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrftoken,
+                },
+                body: JSON.stringify({
+                    'item_id': itemId,
+                    'action': action
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    // Update individual item quantity and subtotal
+                    const quantitySpan = document.getElementById(`quantity-${itemId}`);
+                    const subtotalSpan = document.getElementById(`subtotal-${itemId}`);
+                    const grandTotalSpan = document.getElementById('grand-total-amount');
+
+                    if (data.quantity > 0) {
+                        quantitySpan.textContent = data.quantity;
+                        subtotalSpan.textContent = `${data.subtotal}`;
+                        
+                    } else {
+                        // Item removed completely (quantity == 0)
+                        itemElement.remove();
+                    }
+
+                    // Update Grand Total and Payment Button Link
+                    grandTotalSpan.textContent = `₹${data.new_grand_total}`;
+                    
+                    const paymentButton = document.querySelector('.confirm-order-btn');
+                    // Safely update the payment URL with the new total
+                    const baseUrl = paymentButton.href.substring(0, paymentButton.href.lastIndexOf('/') + 1);
+                    paymentButton.href = `${baseUrl}${data.new_grand_total}`;
+
+
+                } else {
+                    alert('Error updating cart: ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Fetch Error:', error);
+                alert('A network error occurred.');
+            });
+        });
+    });
+</script>
+{% endblock %}

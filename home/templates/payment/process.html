@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block title %}Complete Payment{% endblock %}
+
+{% block content %}
+<style>
+    /* New styling for a focused checkout box */
+    .checkout-box {
+        background-color: #ffffff;
+        border: 1px solid #e0e0e0;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        padding: 40px;
+        max-width: 500px; /* Limits the width for better focus */
+        margin: 50px auto; /* Centers the box */
+        text-align: center;
+    }
+
+    .order-summary {
+        margin-bottom: 30px;
+        padding: 15px 0;
+        border-top: 1px solid #f0f0f0;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    .order-total-label {
+        font-size: 1.2rem;
+        font-weight: 500;
+        color: #555;
+        margin-bottom: 5px;
+    }
+
+    .order-total-amount {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #FF5A1F; /* MediConnect Brand Color */
+    }
+
+    .instruction-text {
+        color: #333;
+        font-size: 1.1rem;
+        margin-bottom: 25px;
+    }
+
+    .alert-box {
+        background-color: #fff3cd;
+        border: 1px solid #ffeeba;
+        color: #856404;
+        padding: 15px;
+        border-radius: 8px;
+        font-size: 0.9em;
+        margin-top: 20px;
+    }
+</style>
+
+<div class="auth-container">
+    <div class="checkout-box">
+        <h2 class="mb-4" style="color: #333;">Final Step: Secure Payment</h2>
+        
+        <div class="order-summary">
+            <div class="order-total-label">Order Total:</div>
+            <div class="order-total-amount">₹{{ grand_total }}</div>
+        </div>
+        
+        <p class="instruction-text">
+            Click the button below to proceed to the secure **PayPal Sandbox** environment:
+        </p>
+        
+        <div class="paypal-button-container my-4">
+            {{ form.render }} 
+        </div>
+
+        <div class="alert-box">
+            **TEST TRANSACTION ALERT:**
+            <p style="margin: 5px 0 0 0;">Use your **Personal Sandbox Account** login credentials when prompted by PayPal. No real money will be charged.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

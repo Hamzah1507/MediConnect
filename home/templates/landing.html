@@ -7,7 +7,7 @@ MediConnect | Online Pharmacy
 
 {% block content %}
 <style>
-    /* Responsive Hero Section */
+    /* Original Styles */
     .hero-container {
         display: flex;
         flex-direction: row;
@@ -17,7 +17,6 @@ MediConnect | Online Pharmacy
         padding: 50px 40px;
     }
 
-    /* Mobile styles - stack content */
     @media (max-width: 768px) {
         .hero-container {
             flex-direction: column;
@@ -28,26 +27,516 @@ MediConnect | Online Pharmacy
             margin-top: 30px;
         }
     }
+
+    .section-heading {
+        font-family: 'Poppins', sans-serif;
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 15px;
+        color: #333;
+    }
+
+    .section-text {
+        font-family: 'Poppins', sans-serif;
+        font-size: 1.1rem;
+        color: #555;
+        max-width: 700px;
+        margin: 0 auto;
+        line-height: 1.6;
+    }
+
+    .category-container {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 35px;
+        margin-top: 50px;
+    }
+
+    .category-item {
+        text-align: center;
+        transition: transform 0.3s ease;
+        cursor: pointer;
+    }
+
+    .category-item img {
+        width: 130px;
+        height: 130px;
+        border-radius: 50%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+
+    .category-item:hover img {
+        transform: scale(1.05);
+    }
+
+    .category-item p {
+        font-family: 'Poppins', sans-serif;
+        margin-top: 10px;
+        font-weight: 600;
+        font-size: 1rem;
+        color: #333;
+    }
+
+    /* === FINAL PROFESSIONAL STYLES for Frequently Used Medicines Section === */
+    .frequent-medicines-section {
+        text-align: center;
+        padding: 60px 20px;
+        background-color: #fff;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .frequent-medicines-section h2 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 40px;
+        color: #1a1a1a;
+    }
+
+    .medicine-grid {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 25px;
+        margin-top: 20px;
+    }
+
+    .medicine-card {
+        border-radius: 12px;
+        overflow: hidden;
+        width: 300px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s, box-shadow 0.3s, opacity 0.5s ease-in-out;
+        background-color: #fff;
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .medicine-card.hidden {
+        opacity: 0;
+        display: none;
+    }
+
+    .medicine-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    }
+
+    .medicine-card img {
+        width: 100%;
+        height: 210px;
+        object-fit: contain;
+        padding: 15px;
+        background-color: transparent;
+        border-bottom: 1px solid #eee;
+    }
+
+    .card-details {
+        padding: 15px 20px 20px;
+    }
+
+    .card-details h3 {
+        margin: 0 0 5px;
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #333;
+    }
+
+    .card-details p {
+        font-size: 0.9rem;
+        color: #666;
+        margin: 0 0 15px;
+        line-height: 1.4;
+        height: 40px;
+        overflow: hidden;
+    }
+
+    /* === UPDATED: Add to Cart Container Styling === */
+    .add-to-cart-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 20px;
+    }
+
+    /* The new style for the single plus button */
+    .single-plus-btn {
+        background-color: #FF5A1F;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 35px;
+        height: 35px;
+        font-size: 1.5rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .single-plus-btn:hover {
+        background-color: #E64A19;
+        transform: scale(1.1);
+    }
+
+    .quantity-selector {
+        display: flex;
+        align-items: center;
+        border-radius: 5px;
+        background-color: #E0E0E0;
+        padding: 5px;
+        transition: opacity 0.3s;
+    }
+
+    .quantity-btn {
+        background: transparent;
+        color: #333;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .quantity-btn:hover {
+        opacity: 0.8;
+    }
+
+    .quantity-text {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #333;
+        padding: 0 10px;
+    }
+
+    /* === New CSS for Animations === */
+    @keyframes fadein {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .animated-onload {
+        animation-name: fadein;
+        animation-duration: 1s;
+        animation-fill-mode: forwards;
+    }
+
+    .animated-onscroll {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .animated-onscroll.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
 </style>
 
-<section style="background: #FF5A1F; color: white; padding: 50px; border-radius: 15px; margin: 40px;">
+<section id="home" class="animated-onload"
+    style="background: #FF5A1F; color: white; padding: 50px; border-radius: 15px; margin: 40px;">
     <div class="hero-container">
         <div style="max-width: 50%;">
-            <h2 style="font-size: 2.5rem; margin-bottom: 20px; font-weight: 700;">Order your<br>Medicine from here</h2>
-            <p style="font-size: 1.1rem; margin-bottom: 30px; line-height: 1.6;">
-                Your trusted partner for online medicine shopping. Browse a wide selection, order effortlessly, 
+            <h2 style="font-size: 2.5rem; margin-bottom: 20px; font-weight: 700; font-family: 'Poppins', sans-serif;">
+                Order your<br>Medicine from here</h2>
+            <p style="font-size: 1.1rem; margin-bottom: 30px; line-height: 1.6; font-family: 'Poppins', sans-serif;">
+                Your trusted partner for online medicine shopping. Browse a wide selection, order effortlessly,
                 and get your essentials delivered to your home quickly and securely—because your health matters.
             </p>
-            <a href="/appointments/" style="background: white; color: #FF5A1F; padding: 12px 25px; 
-                text-decoration: none; font-weight: bold; border-radius: 25px; transition: background-color 0.3s, color 0.3s;">
+            <a href="{% url 'cart' %}" style="background: white; color: #FF5A1F; padding: 12px 25px;
+    text-decoration: none; font-weight: bold; border-radius: 25px; transition: background-color 0.3s, color 0.3s;">
                 Order Now
             </a>
         </div>
-        
+
         <div class="hero-image-container" style="flex: 1; display: flex; justify-content: center;">
             <img src="{% static 'images/medicine-cart.png' %}" alt="Medicine Cart"
                 style="max-width: 400px; height: auto; border-radius: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); object-fit: contain;">
         </div>
     </div>
 </section>
+
+<section id="categories" class="animated-onscroll" style="text-align: center; padding: 40px;">
+    <h2 class="section-heading">Explore Our Medicines</h2>
+    <p class="section-text">
+        Discover a wide range of trusted medicines, health essentials, and wellness products.
+        Find exactly what you need in just a few clicks and have it delivered safely to your doorstep.
+    </p>
+
+    <div class="category-container">
+        <a href="#" class="category-item" data-category="Diabetes" style="text-decoration: none; color: inherit;">
+            <img src="{% static 'images/diabetes.png' %}" alt="Diabetes" style="border: 2px solid gray;">
+            <p>Diabetes</p>
+        </a>
+        <a href="#" class="category-item" data-category="Heart" style="text-decoration: none; color: inherit;">
+            <img src="{% static 'images/heart.png' %}" alt="Heart" style="border: 2px solid gray;">
+            <p>Heart</p>
+        </a>
+        <a href="#" class="category-item" data-category="Stomach" style="text-decoration: none; color: inherit;">
+            <img src="{% static 'images/stomach.png' %}" alt="Stomach" style="border: 2px solid gray;">
+            <p>Stomach</p>
+        </a>
+        <a href="#" class="category-item" data-category="Liver" style="text-decoration: none; color: inherit;">
+            <img src="{% static 'images/liver.png' %}" alt="Liver" style="border: 2px solid gray;">
+            <p>Liver</p>
+        </a>
+        <a href="#" class="category-item" data-category="Muscle" style="text-decoration: none; color: inherit;">
+            <img src="{% static 'images/muscle.png' %}" alt="Muscle" style="border: 2px solid gray;">
+            <p>Muscle</p>
+        </a>
+        <a href="#" class="category-item" data-category="Kidney" style="text-decoration: none; color: inherit;">
+            <img src="{% static 'images/kidney.png' %}" alt="Kidney" style="border: 2px solid gray;">
+            <p>Kidney</p>
+        </a>
+        <a href="#" class="category-item" data-category="Derma" style="text-decoration: none; color: inherit;">
+            <img src="{% static 'images/derma.png' %}" alt="Derma" style="border: 2px solid gray;">
+            <p>Derma</p>
+        </a>
+        <a href="#" class="category-item" data-category="Eye" style="text-decoration: none; color: inherit;">
+            <img src="{% static 'images/eye.png' %}" alt="Eye" style="border: 2px solid gray;">
+            <p>Eye</p>
+        </a>
+    </div>
+</section>
+
+<section class="frequent-medicines-section animated-onscroll">
+    <h2>Frequently Used Medicines</h2>
+    <div class="medicine-grid">
+        {% for medicine in frequent_medicines %}
+        <div class="medicine-card" data-category="{{ medicine.category }}" data-id="{{ medicine.id }}">
+            <img src="{{ medicine.image.url }}" alt="{{ medicine.name }}">
+            <div class="card-details">
+                <h3>{{ medicine.name }}</h3>
+                <p>{{ medicine.description|truncatewords:15 }}</p>
+                <div class="add-to-cart-container">
+                    <span class="price">₹{{ medicine.price }}</span>
+                    <button class="single-plus-btn"><i class="fa-solid fa-plus"></i></button>
+                    <div class="quantity-selector" style="display: none;">
+                        <button class="quantity-btn minus-btn"><i class="fa-solid fa-minus"></i></button>
+                        <span class="quantity-text">1</span>
+                        <button class="quantity-btn plus-btn"><i class="fa-solid fa-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const medicineCards = document.querySelectorAll('.medicine-card');
+
+        // --- SINGLE PLUS BUTTON FUNCTIONALITY (First click) ---
+        medicineCards.forEach(card => {
+            const singlePlusBtn = card.querySelector('.single-plus-btn');
+            if (singlePlusBtn) {
+                singlePlusBtn.addEventListener('click', function () {
+                    const card = this.closest('.medicine-card');
+                    const medicineId = card.dataset.id;
+
+                    fetch(`/add-to-cart/${medicineId}/`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRFToken': getCookie('csrftoken'),
+                        },
+                        body: JSON.stringify({ quantity: 1 }),
+                    })
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('Network response was not ok');
+                            }
+                            return response.json();
+                        })
+                        .then(data => {
+                            if (data.status === 'success') {
+                                alert(data.message);
+                                // On success, hide the single plus button and show the counter
+                                singlePlusBtn.style.display = 'none';
+                                const quantitySelector = card.querySelector('.quantity-selector');
+                                const quantityText = card.querySelector('.quantity-text');
+                                if (quantitySelector && quantityText) {
+                                    quantitySelector.style.display = 'flex';
+                                    quantityText.textContent = '1';
+                                }
+                            } else {
+                                alert('Error: ' + data.message);
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Fetch error:', error);
+                            alert('An error occurred while adding to cart.');
+                        });
+                });
+            }
+        });
+
+        // --- PLUS BUTTON FUNCTIONALITY (Subsequent clicks) ---
+        const plusButtons = document.querySelectorAll('.plus-btn');
+        plusButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                const card = this.closest('.medicine-card');
+                const medicineId = card.dataset.id;
+
+                fetch(`/add-to-cart/${medicineId}/`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': getCookie('csrftoken'),
+                    },
+                    body: JSON.stringify({ quantity: 1 }), // Always add 1
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        if (data.status === 'success') {
+                            alert(data.message);
+                            const quantityText = card.querySelector('.quantity-text');
+                            if (quantityText) {
+                                quantityText.textContent = data.quantity;
+                            }
+                        } else {
+                            alert('Error: ' + data.message);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Fetch error:', error);
+                        alert('An error occurred while adding to cart.');
+                    });
+            });
+        });
+
+        // --- MINUS BUTTON FUNCTIONALITY ---
+        const minusButtons = document.querySelectorAll('.minus-btn');
+        minusButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                const card = this.closest('.medicine-card');
+                const medicineId = card.dataset.id;
+
+                fetch(`/remove-from-cart-ajax/${medicineId}/`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': getCookie('csrftoken'),
+                    },
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        if (data.status === 'success') {
+                            alert(data.message);
+                            const quantitySelector = card.querySelector('.quantity-selector');
+                            const singlePlusBtn = card.querySelector('.single-plus-btn');
+                            const quantityText = card.querySelector('.quantity-text');
+                            if (data.quantity === 0) {
+                                quantitySelector.style.display = 'none';
+                                singlePlusBtn.style.display = 'flex';
+                                quantityText.textContent = '1';
+                            } else {
+                                quantityText.textContent = data.quantity;
+                            }
+                        } else {
+                            alert('Error: ' + data.message);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Fetch error:', error);
+                        alert('An error occurred while removing from cart.');
+                    });
+            });
+        });
+
+        // Helper function to get CSRF token
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.startsWith(name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+
+        // JavaScript for dynamic filtering
+        const categoryItems = document.querySelectorAll('.category-item');
+        const allMedicineCards = document.querySelectorAll('.medicine-card');
+
+        // Function to show all medicines by default
+        function showAllMedicines() {
+            allMedicineCards.forEach(medicine => {
+                medicine.style.display = 'flex';
+            });
+        }
+
+        // This makes sure all medicines are visible when the page loads
+        showAllMedicines();
+
+        // Set up click listeners for category items
+        categoryItems.forEach(item => {
+            item.addEventListener('click', function (e) {
+                e.preventDefault(); // Prevents the link from reloading the page
+                const selectedCategory = this.getAttribute('data-category');
+
+                // If a category is clicked, filter the medicines
+                allMedicineCards.forEach(medicine => {
+                    if (medicine.getAttribute('data-category') === selectedCategory) {
+                        medicine.style.display = 'flex';
+                    } else {
+                        medicine.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // JavaScript for scroll animation
+        const sections = document.querySelectorAll('.animated-onscroll');
+
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    });
+</script>
 {% endblock %}
