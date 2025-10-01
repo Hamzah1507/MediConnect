@@ -125,34 +125,50 @@
 
     <nav
         style="display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; background: #EFECEC; box-shadow: 0 2px 5px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000;">
+        
         <div style="font-size: 1.5rem; font-weight: bold; color: #FF5A1F; cursor: pointer;">
             MediConnect.
         </div>
-        <div>
-            <a href="{% url 'home' %}" style="margin: 0 15px; text-decoration: none; color: #333; font-weight: 500;">Home</a>
-            <a href="{% url 'home' %}#categories" class="smooth-scroll" style="margin: 0 15px; text-decoration: none; color: #333; font-weight: 500;">Menu</a>
-            <a href="#contact" class="smooth-scroll" style="margin: 0 15px; text-decoration: none; color: #333; font-weight: 500;">Contact Us</a>
-        </div>
-        <div style="display: flex; align-items: center;">
-            <div class="search-container">
-                <input type="text" id="search-input" class="search-input" placeholder="Search medicines...">
-                <i class="fa-solid fa-magnifying-glass search-icon"></i>
-                <div id="suggestions-box" class="search-suggestions"></div>
+        
+        {% if user.is_authenticated %}
+        
+            <div>
+                <a href="{% url 'home' %}" style="margin: 0 15px; text-decoration: none; color: #333; font-weight: 500;">Home</a>
+                <a href="{% url 'home' %}#categories" class="smooth-scroll" style="margin: 0 15px; text-decoration: none; color: #333; font-weight: 500;">Menu</a>
+                <a href="#contact" class="smooth-scroll" style="margin: 0 15px; text-decoration: none; color: #333; font-weight: 500;">Contact Us</a>
             </div>
             
-            <a href="{% url 'cart' %}" style="margin-right: 20px; font-size: 18px; color: #333; text-decoration: none;">🛒</a>
-            {% if user.is_authenticated %}
+            <div style="display: flex; align-items: center;">
+                <div class="search-container">
+                    <input type="text" id="search-input" class="search-input" placeholder="Search medicines...">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <div id="suggestions-box" class="search-suggestions"></div>
+                </div>
+                
+                <a href="{% url 'cart' %}" style="margin-right: 20px; font-size: 18px; color: #333; text-decoration: none;">🛒</a>
+                
                 <a href="{% url 'logout' %}"
                     style="border: 2px solid #FF5A1F; padding: 8px 15px; border-radius: 25px; color: #FF5A1F; text-decoration: none; font-weight: bold;">
                     Logout
                 </a>
-            {% else %}
+            </div>
+            
+        {% else %}
+        
+            <div style="width: 300px;"></div> 
+
+            <div style="display: flex; align-items: center;">
+                <a href="{% url 'login' %}" 
+                    style="margin-right: 15px; text-decoration: none; color: #333; font-weight: 500;">
+                    Log In
+                </a>
                 <a href="{% url 'signup' %}"
                     style="border: 2px solid #FF5A1F; padding: 8px 15px; border-radius: 25px; color: #FF5A1F; text-decoration: none; font-weight: bold;">
                     Sign Up
                 </a>
-            {% endif %}
-        </div>
+            </div>
+        
+        {% endif %}
     </nav>
 
     {% block content %}
@@ -215,7 +231,8 @@
                 });
             });
 
-            // === NEW JAVASCRIPT FOR SEARCH BAR ===
+            // === NEW JAVASCRIPT FOR SEARCH BAR (Needs to be inside the authenticated block if used) ===
+            // This JS logic remains here but will only run for elements that exist when authenticated.
             const searchInput = document.getElementById('search-input');
             const suggestionsBox = document.getElementById('suggestions-box');
             const allMedicineCards = document.querySelectorAll('.medicine-card');
@@ -241,23 +258,26 @@
             
             let debounceTimer;
 
-            searchInput.addEventListener('input', function() {
-                clearTimeout(debounceTimer);
-                const query = this.value;
+            // Check if searchInput exists (i.e., user is authenticated) before adding listener
+            if (searchInput) {
+                searchInput.addEventListener('input', function() {
+                    clearTimeout(debounceTimer);
+                    const query = this.value;
 
-                if (query.length > 0) {
-                    debounceTimer = setTimeout(() => {
-                        fetch(`{% url 'search' %}?q=${query}`)
-                            .then(response => response.json())
-                            .then(data => {
-                                displaySuggestions(data.results);
-                            });
-                    }, 300);
-                } else {
-                    suggestionsBox.style.display = 'none';
-                    showAllMedicines(); // Show all medicines if search bar is empty
-                }
-            });
+                    if (query.length > 0) {
+                        debounceTimer = setTimeout(() => {
+                            fetch(`{% url 'search' %}?q=${query}`)
+                                .then(response => response.json())
+                                .then(data => {
+                                    displaySuggestions(data.results);
+                                });
+                        }, 300);
+                    } else {
+                        suggestionsBox.style.display = 'none';
+                        showAllMedicines(); // Show all medicines if search bar is empty
+                    }
+                });
+            }
 
             function displaySuggestions(results) {
                 if (results.length === 0) {

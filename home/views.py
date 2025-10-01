@@ -3,16 +3,28 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.db.models import Q
 from django.urls import reverse 
 from django.conf import settings
 from django.views.decorators.csrf import csrf_exempt
-import json # Used for handling AJAX JSON data
-from decimal import Decimal # Required for accurate currency handling
-import uuid # For generating a unique invoice ID
+import json 
+from decimal import Decimal 
+import uuid 
+from django.core.files.storage import FileSystemStorage 
+import os 
+from django.contrib.messages import get_messages # <--- NEW IMPORT: Needed to clear old messages
 
-from .models import SignupUser, Medicine, Cart
+# === NEW IMPORTS for Validation ===
+from .utils import validate_prescription_stamp 
+# ==================================
+
+# === PAYPAL INTEGRATION IMPORTS ===
+from paypal.standard.forms import PayPalPaymentsForm
+# ==================================
+
+# NOTE: Assuming models are correctly imported from .models
+from .models import SignupUser, Medicine, Cart, CheckoutDetails 
 
 # --- AUTHENTICATION & CORE VIEWS ---
 
@@ -170,38 +182,131 @@ def update_cart_quantity_ajax(request):
                 cart_item.quantity -= 1
             
             # Save or Delete based on new quantity
+            item_was_deleted = False
             if cart_item.quantity > 0:
                 cart_item.save()
             else:
-                cart_item_id = cart_item.id
                 cart_item.delete()
-                cart_item.id = None # Necessary to avoid referencing deleted object in response
+                item_was_deleted = True
 
             # Recalculate Totals
             new_cart_items = Cart.objects.filter(user=request.user)
             new_grand_total = sum(item.total_price() for item in new_cart_items)
             
+            # Prepare the response data safely
             response_data = {
                 'status': 'success',
                 # Safely return subtotal and quantity
-                'subtotal': cart_item.total_price() if cart_item.id else 0,
-                'quantity': cart_item.quantity if cart_item.id else 0,
+                'subtotal': cart_item.total_price() if not item_was_deleted else 0,
+                'quantity': cart_item.quantity if not item_was_deleted else 0,
                 'new_grand_total': "%.2f" % new_grand_total # Return total formatted as string
             }
             
             return JsonResponse(response_data)
 
         except Exception as e:
-            return JsonResponse({'status': 'error', 'message': str(e)}, status=400)
+            return JsonResponse({'status': 'error', 'message': f"AJAX Update Error: {str(e)}"}, status=400)
     
     return JsonResponse({'status': 'error', 'message': 'Invalid request'}, status=405)
 
 
-# --- PAYPAL PAYMENT VIEWS ---
+# --- PRESCRIPTION UPLOAD & PAYMENT FLOW VIEWS (MODIFIED) ---
+
+@login_required
+def checkout_upload(request, total):
+    """
+    Handles prescription upload, stamp validation, and redirection.
+    This is the first step after clicking 'Proceed to Pay' on the cart.
+    """
+    
+    try:
+        # Convert total from URL string to Decimal for calculation
+        cart_total_decimal = Decimal(total)
+        if cart_total_decimal <= 0:
+            messages.error(request, "Your cart is empty or total is zero.")
+            return redirect('cart')
+    except:
+        messages.error(request, "Invalid order total provided.")
+        return redirect('cart')
+
+    # --- FIX: CLEAR ALL OLD MESSAGES ---
+    # This consumes and clears any messages lingering from login/logout/redirects.
+    storage = get_messages(request)
+    # Simply iterating over the storage object clears the messages from the session
+    for message in storage:
+        pass 
+    # --- END FIX ---
+
+    if request.method == 'POST':
+        # NOTE: Ensure the form input name in checkout_upload.html is 'prescription_file'
+        uploaded_file = request.FILES.get('prescription_file')
+
+        if uploaded_file:
+            # 1. Basic File Type Validation
+            valid_types = ['image/jpeg', 'image/png', 'application/pdf']
+            if uploaded_file.content_type not in valid_types:
+                messages.error(request, "Error: Invalid file type. Please upload a JPEG, PNG, or PDF.")
+                return redirect('checkout_upload', total=total)
+
+            # --- START STAMP VALIDATION PROCESS ---
+            
+            # 2. Save the File Temporarily for Validation
+            fs = FileSystemStorage() # Uses settings.MEDIA_ROOT
+            filename = fs.save(uploaded_file.name, uploaded_file)
+            uploaded_file_path = os.path.join(settings.MEDIA_ROOT, filename)
+
+            # 3. Perform Stamp Validation
+            validation_result = validate_prescription_stamp(uploaded_file_path)
+
+            # 4. Clean up the temporarily saved file (Crucial!)
+            fs.delete(filename) 
+            
+            # 5. Handle Validation Results and Redirection
+            if validation_result is True:
+                # VALID PRESCRIPTION (STAMP DETECTED or PDF assumed valid)
+                
+                # Re-save the file PERMANENTLY and update the model
+                final_filename = fs.save(uploaded_file.name, uploaded_file) # Re-save the file
+                checkout_details, created = CheckoutDetails.objects.get_or_create(user=request.user)
+                checkout_details.prescription_file = final_filename
+                checkout_details.save()
+                
+                messages.success(request, "Prescription validated successfully! Redirecting to payment.")
+                # Success: Redirect to the final payment view
+                return redirect('process_payment', total=total)
+
+            elif validation_result is False:
+                # FAKE PRESCRIPTION (NO STAMP DETECTED)
+                messages.error(request, "⚠️ **Fake Prescription Alert:** No valid doctor's stamp was detected in the image. Please upload a genuine, stamped prescription.")
+                # Redirect back to the upload page with the error
+                return redirect('checkout_upload', total=total)
+
+            elif validation_result == "error":
+                # IMAGE ERROR (e.g., corrupt file, CV library error)
+                messages.error(request, "An error occurred during prescription validation. Please ensure the image is clear and try again.")
+                # Redirect back to the upload page with the error
+                return redirect('checkout_upload', total=total)
+
+            # --- END STAMP VALIDATION PROCESS ---
+
+        else:
+            messages.error(request, "Prescription is required to proceed.")
+            # Redirect back to the upload page with the error
+            return redirect('checkout_upload', total=total)
+            
+    context = {
+        'grand_total': cart_total_decimal,
+        'total_str': total 
+    }
+    return render(request, 'payment/checkout_upload.html', context)
+
 
 @login_required
 def process_payment(request, total):
-    """Generates and renders the PayPal payment form."""
+    """
+    Generates and renders the PayPal payment form.
+    NOTE: This view's URL name must be 'process_payment_final' in urls.py.
+    """
     from paypal.standard.forms import PayPalPaymentsForm # Imported here for visibility
 
     try:
@@ -209,7 +314,7 @@ def process_payment(request, total):
     except:
         messages.error(request, "Invalid cart total.")
         return redirect('cart')
-
+    
     if cart_total_decimal <= 0:
         messages.error(request, "Your cart is empty.")
         return redirect('cart')
@@ -217,6 +322,7 @@ def process_payment(request, total):
     invoice_id = str(uuid.uuid4())
     host = request.get_host()
     
+    # NOTE: Currency is forced to USD for reliable Sandbox testing
     paypal_dict = {
         "business": settings.PAYPAL_RECEIVER_EMAIL, 
         "amount": f"{cart_total_decimal:.2f}", 
@@ -238,7 +344,11 @@ def process_payment(request, total):
 @login_required
 def payment_done(request):
     """Redirect target after PayPal payment succeeds (clears cart for demo)."""
-    Cart.objects.filter(user=request.user).delete()
+    try:
+        Cart.objects.filter(user=request.user).delete()
+    except Exception:
+        pass 
+
     messages.success(request, "Payment successful! Your order has been placed (Test Mode).")
     return render(request, 'payment/done.html')
 

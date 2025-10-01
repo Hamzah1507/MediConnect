@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Upload Prescription{% endblock %}
+
+{% block content %}
+<style>
+    .upload-container {
+        max-width: 550px;
+        margin: 50px auto;
+        padding: 40px;
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        border-top: 5px solid #FF5A1F;
+    }
+    .file-input-group {
+        margin-top: 20px;
+        padding: 20px;
+        border: 2px dashed #ccc;
+        border-radius: 10px;
+        text-align: center;
+        cursor: pointer;
+        transition: border-color 0.2s;
+    }
+    .file-input-group:hover {
+        border-color: #FF5A1F;
+    }
+    .upload-btn {
+        background-color: #4CAF50;
+        color: white;
+        padding: 12px 30px;
+        border: none;
+        border-radius: 25px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        width: 100%;
+    }
+</style>
+
+<div class="upload-container">
+    <h2 class="text-center" style="color: #333; margin-bottom: 5px;">Prescription Required</h2>
+    <p class="text-center" style="color: #FF5A1F; font-size: 1.5rem; font-weight: bold; margin-bottom: 30px;">
+        Order Total: ₹{{ grand_total }}
+    </p>
+    
+    {% if messages %}
+        <div style="color: red; margin-bottom: 15px; border: 1px solid red; padding: 10px; border-radius: 5px;">
+            {% for message in messages %}
+                <p style="margin: 0;">{{ message }}</p>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <form method="POST" action="{% url 'checkout_upload' total=total_str %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <p style="color: #666; margin-bottom: 25px;">
+            Please upload your doctor's prescription (JPEG, PNG, or PDF) to continue.
+        </p>
+
+        <div class="form-group">
+            <label for="prescription_file" style="display: none;">Prescription File</label>
+            <div class="file-input-group">
+                <input type="file" id="prescription_file" name="prescription_file" required style="display: none;">
+                <p style="margin: 0; color: #666;">
+                    Click to browse or Drag & Drop file here
+                </p>
+            </div>
+        </div>
+        
+        <button type="submit" class="upload-btn mt-4">
+            Upload & Continue to Payment
+        </button>
+    </form>
+</div>
+
+<script>
+    // JS to show file name after selection
+    document.getElementById('prescription_file').addEventListener('change', function() {
+        const fileName = this.files[0] ? this.files[0].name : 'Click to browse';
+        document.querySelector('.file-input-group p').innerHTML = `**Selected File:** ${fileName}`;
+    });
+    // Clicking the visual area triggers the hidden file input
+    document.querySelector('.file-input-group').addEventListener('click', function() {
+        document.getElementById('prescription_file').click();
+    });
+</script>
+{% endblock %}

@@ -205,6 +205,7 @@
                                 <span class="quantity-display" id="quantity-{{ item.id }}">{{ item.quantity }}</span>
                                 <button class="increase-quantity" data-item-id="{{ item.id }}" data-action="increase">+</button>
                             </div>
+                            
                             <p class="total-price">Subtotal: ₹<span id="subtotal-{{ item.id }}">{{ item.total_price }}</span></p>
                         </div>
                     </div>
@@ -223,7 +224,7 @@
                 <span class="total-value" id="grand-total-amount">₹{{ total }}</span>
             </div>
             
-            <a href="{% url 'process_payment' total=total|stringformat:"s" %}" class="confirm-order-btn">
+            <a href="{% url 'checkout_upload' total=total_str %}" class="confirm-order-btn">
                 Proceed to Pay
             </a>
         </div>

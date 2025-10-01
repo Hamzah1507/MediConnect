@@ -8,8 +8,8 @@ urlpatterns = [
     # This is your main website content, now at a new URL.
     path('home/', views.landing_page, name='home'),
 
-    # Your sign up page remains the same.
-    path('signin/', views.signup, name='signin'),
+    # FIX: The name is corrected to 'signup' to match {% url 'signup' %} in templates.
+    path('signin/', views.signup, name='signup'), # <--- CORRECTION HERE
 
     # We will create a new URL for a dedicated login page.
     path('login/', views.login_view, name='login'),
@@ -33,15 +33,18 @@ urlpatterns = [
     path('remove-from-cart-ajax/<int:medicine_id>/', views.remove_from_cart_ajax, name='remove_from_cart_ajax'),
 
     # =================================================================
-    # === UPDATED: PAYPAL SANDBOX PAYMENT URLS (Replaces Instamojo) ===
+    # === CHECKOUT AND PAYMENT FLOW (3 STEPS) ===
     # =================================================================
 
-    # 1. URL to process the payment (Called by the 'Confirm Order' button)
-    path('process-payment/<str:total>/', views.process_payment, name='process_payment'),
+    # 1. NEW STEP: Collect Prescription/Details (Called from Cart page)
+    path('checkout/upload/<str:total>/', views.checkout_upload, name='checkout_upload'), 
+    
+    # 2. FINAL STEP: Payment Processing (Called from the checkout_upload POST action)
+    path('process-payment-final/<str:total>/', views.process_payment, name='process_payment'),
 
-    # 2. URL for PayPal to redirect to upon SUCCESS.
+    # 3. URL for PayPal to redirect to upon SUCCESS.
     path('payment-done/', views.payment_done, name='payment_done'),
 
-    # 3. URL for PayPal to redirect to upon CANCELLATION.
+    # 4. URL for PayPal to redirect to upon CANCELLATION.
     path('payment-canceled/', views.payment_canceled, name='payment_canceled'),
 ]

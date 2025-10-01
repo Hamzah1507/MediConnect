@@ -1,0 +1,2221 @@
+[
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "admin",
+    "model": "logentry"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "auth",
+    "model": "permission"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "auth",
+    "model": "group"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "auth",
+    "model": "user"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "contenttypes",
+    "model": "contenttype"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "sessions",
+    "model": "session"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "home",
+    "model": "signupuser"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "home",
+    "model": "medicine"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "home",
+    "model": "cart"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "sites",
+    "model": "site"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "ipn",
+    "model": "paypalipn"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "dtfzqpwsatpm7g8ximl35wqpolerp2xh",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQRe_C2hBoGcq4dO8ZyMCAVA0kpV0Z765NutDtf-_9l_C0rcVvPS1-ZnEWIE6_W6D4SHUHfKd6azK2ui5zkLsiD9rltXF6Xg7376BQL9965MCYIpqJABy6kFQCtsYqayOMeoCgKQJOWQHkITtjI2bSzC44QhTvD-dPN_g:1v0yFi:lfbHEVnsx8PdriYMOt9pAWVnOFkrheaM7Ypb34WiHWw",
+    "expire_date": "2025-10-07T08:19:58.366Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "q4ew8qgary508owfzluz69anqtbzxmlx",
+  "fields": {
+    "session_data": ".eJxVjMEOwiAQBf-FsyFAKbAevfcbyLJQqRpISnsy_rsl6UHzbjOT92Ye9y37vaXVL5FdmWSXXxaQnql0ER9Y7pVTLdu6BN4TftrGpxrT63a2fwcZW-632kWlCcysFJJVFoJBq6KAcZDDABiNHuGAswgmgRHOoZWESBDwGPt8AcVqN9Y:1v2pVI:F3QiumH8nyJGioV4UbJRywpykcSBN0MkG9OWwxwq1Bs",
+    "expire_date": "2025-10-12T11:23:44.236Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "y08iewfp8krxedcssw4mjbj7yk24sjag",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQRe_C2hBoGcq4dO8ZyMCAVA0kpV0Z765NutDtf-_9l_C0rcVvPS1-ZnEWIE6_W6D4SHUHfKd6azK2ui5zkLsiD9rltXF6Xg7376BQL9965MCYIpqJABy6kFQCtsYqayOMeoCgKQJOWQHkITtjI2bSzC44QhTvD-dPN_g:1v0zM9:9wOChPYg9dctqIMApMywnKHo28XcrzhYJO7EE6z1HCQ",
+    "expire_date": "2025-10-07T09:30:41.060Z"
+  }
+},
+{
+  "model": "sites.site",
+  "fields": {
+    "domain": "example.com",
+    "name": "example.com"
+  }
+},
+{
+  "model": "home.signupuser",
+  "pk": 6,
+  "fields": {
+    "name": "hamzah",
+    "email": "hii123@gmail.com",
+    "password": "123456"
+  }
+},
+{
+  "model": "home.medicine",
+  "pk": 1,
+  "fields": {
+    "name": "Glycomet",
+    "description": "Glycomet is a medication used to control high blood sugar levels in people with type 2 diabetes.",
+    "price": "42.00",
+    "image": "medicines/medi_1.png",
+    "category": null
+  }
+},
+{
+  "model": "home.medicine",
+  "pk": 2,
+  "fields": {
+    "name": "Lantus Cartridge",
+    "description": "Lantus Cartridge is a long-acting insulin used to manage blood sugar in people with type 1 and type 2 diabetes.",
+    "price": "628.00",
+    "image": "medicines/medi_2.png",
+    "category": null
+  }
+},
+{
+  "model": "home.medicine",
+  "pk": 3,
+  "fields": {
+    "name": "Glucored Forte",
+    "description": "Glucored Forte is a combination medicine that helps manage type 2 diabetes by improving insulin sensitivity and production.",
+    "price": "67.00",
+    "image": "medicines/medi_3.png",
+    "category": null
+  }
+},
+{
+  "model": "home.medicine",
+  "pk": 4,
+  "fields": {
+    "name": "Galvus Met",
+    "description": "Galvus Met is a combination medicine that helps manage type 2 diabetes by improving insulin production and effectiveness.",
+    "price": "350.00",
+    "image": "medicines/medi_4.png",
+    "category": null
+  }
+},
+{
+  "model": "home.medicine",
+  "pk": 5,
+  "fields": {
+    "name": "Amlokind-AT",
+    "description": "A combination medicine used to treat high blood pressure. It works by relaxing blood vessels and slowing down the heart rate.",
+    "price": "45.50",
+    "image": "medicines/medi_5_PH1OAf9.png",
+    "category": null
+  }
+},
+{
+  "model": "home.medicine",
+  "pk": 6,
+  "fields": {
+    "name": "Cardace 2.5",
+    "description": "Used to treat high blood pressure and prevent heart attacks and strokes. It works by relaxing blood vessels.",
+    "price": "150.00",
+    "image": "medicines/medi_6_x3bS1Nt.png",
+    "category": null
+  }
+},
+{
+  "model": "home.medicine",
+  "pk": 7,
+  "fields": {
+    "name": "Clopitab",
+    "description": "A blood thinner used to prevent heart attacks and strokes. It works by preventing blood clots from forming in the arteries.",
+    "price": "105.00",
+    "image": "medicines/medi_7_djKVK5p.png",
+    "category": null
+  }
+},
+{
+  "model": "home.medicine",
+  "pk": 8,
+  "fields": {
+    "name": "Atorva 10",
+    "description": "A cholesterol-lowering medicine used to reduce the risk of heart disease. It works by reducing the amount of cholesterol made by the liver.",
+    "price": "110.00",
+    "image": "medicines/medi_8_EZigRco.png",
+    "category": null
+  }
+},
+{
+  "model": "home.medicine",
+  "pk": 9,
+  "fields": {
+    "name": "Glycomet",
+    "description": "Used to manage blood sugar levels in adults with type 2 diabetes, often alongside diet and exercise.",
+    "price": "42.00",
+    "image": "medicines/medi_1_S59kV5k.png",
+    "category": "Diabetes"
+  }
+},
+{
+  "model": "home.medicine",
+  "pk": 10,
+  "fields": {
+    "name": "Lantus Cartridge",
+    "description": "A long-acting insulin used to manage blood sugar in adults and children with type 1 and type 2 diabetes.",
+    "price": "628.00",
+    "image": "medicines/medi_2_1E7Qz57.png",
+    "category": "Diabetes"
+  }
+},
+{
+  "model": "home.medicine",
+  "pk": 11,
+  "fields": {
+    "name": "Glucored Forte",
+    "description": "A combination medicine that helps manage type 2 diabetes by improving insulin sensitivity and production.",
+    "price": "67.00",
+    "image": "medicines/medi_3_mzQdtYf.png",
+    "category": "Diabetes"
+  }
+},
+{
+  "model": "home.medicine",
+  "pk": 12,
+  "fields": {
+    "name": "Galvus Met",
+    "description": "A combination medicine that helps control high blood sugar in type 2 diabetes by increasing insulin release.",
+    "price": "350.00",
+    "image": "medicines/medi_4_cyzJaSX.png",
+    "category": "Diabetes"
+  }
+},
+{
+  "model": "home.medicine",
+  "pk": 13,
+  "fields": {
+    "name": "Amlokind-AT",
+    "description": "A combination medicine used to treat high blood pressure. It works by relaxing blood vessels and slowing down the heart rate.",
+    "price": "46.00",
+    "image": "medicines/medi_5_O2W73V5.png",
+    "category": "Heart"
+  }
+},
+{
+  "model": "home.medicine",
+  "pk": 14,
+  "fields": {
+    "name": "Cardace 2.5",
+    "description": "Used to treat high blood pressure and prevent heart attacks and strokes. It works by relaxing blood vessels.",
+    "price": "150.00",
+    "image": "medicines/medi_6_SCet6t4.png",
+    "category": "Heart"
+  }
+},
+{
+  "model": "home.medicine",
+  "pk": 15,
+  "fields": {
+    "name": "Clopitab",
+    "description": "A blood thinner used to prevent heart attacks and strokes. It works by preventing blood clots from forming in the arteries.",
+    "price": "105.00",
+    "image": "medicines/medi_7_HlGGhxi.png",
+    "category": "Heart"
+  }
+},
+{
+  "model": "home.medicine",
+  "pk": 16,
+  "fields": {
+    "name": "Atorva 10",
+    "description": "A cholesterol-lowering medicine used to reduce the risk of heart disease. It works by reducing the amount of cholesterol made by the liver.",
+    "price": "110.00",
+    "image": "medicines/medi_8_8aV0X5L.png",
+    "category": "Heart"
+  }
+},
+{
+  "model": "home.medicine",
+  "pk": 17,
+  "fields": {
+    "name": "Digene",
+    "description": "An antacid and anti-gas medicine used for quick relief from acidity, heartburn, and gas. It comes in a mint flavor.",
+    "price": "150.00",
+    "image": "medicines/medi_9_mi1sGRf.png",
+    "category": "Stomach"
+  }
+},
+{
+  "model": "home.medicine",
+  "pk": 18,
+  "fields": {
+    "name": "Rantac 150",
+    "description": "Used to treat and prevent stomach and intestinal ulcers, heartburn, and other symptoms of acid reflux.",
+    "price": "45.00",
+    "image": "medicines/medi_10_yBvyrHX.png",
+    "category": "Stomach"
+  }
+},
+{
+  "model": "home.medicine",
+  "pk": 19,
+  "fields": {
+    "name": "Junior Lanzol",
+    "description": "A children's antacid that reduces stomach acid. It is used to treat heartburn and acid reflux in a strawberry flavor",
+    "price": "120.00",
+    "image": "medicines/medi_11_L7aDwLi.png",
+    "category": "Stomach"
+  }
+},
+{
+  "model": "home.medicine",
+  "pk": 20,
+  "fields": {
+    "name": "Pan 40",
+    "description": "A proton pump inhibitor used to reduce stomach acid and treat acid-related diseases.",
+    "price": "160.00",
+    "image": "medicines/medi_12_mzt6roA.png",
+    "category": "Stomach"
+  }
+},
+{
+  "model": "home.medicine",
+  "pk": 21,
+  "fields": {
+    "name": "Synertab",
+    "description": "A nutritional supplement that supports joint health and is often used as a supplement to aid in liver health",
+    "price": "220.00",
+    "image": "medicines/medi_13_c6fHEGM.png",
+    "category": "Liver"
+  }
+},
+{
+  "model": "home.medicine",
+  "pk": 22,
+  "fields": {
+    "name": "Udiliv 300",
+    "description": "A medicine containing Ursodeoxycholic Acid used to treat various liver and gallbladder diseases. It helps dissolve gallstones",
+    "price": "450.00",
+    "image": "medicines/medi_14_D7wAvUs.png",
+    "category": "Liver"
+  }
+},
+{
+  "model": "home.medicine",
+  "pk": 23,
+  "fields": {
+    "name": "HepaMerz",
+    "description": "Used to treat liver diseases like cirrhosis and hepatitis. It helps improve the function of a damaged liver.",
+    "price": "300.00",
+    "image": "medicines/medi_15_ICd8RLE.png",
+    "category": "Liver"
+  }
+},
+{
+  "model": "home.medicine",
+  "pk": 24,
+  "fields": {
+    "name": "Liv.52 DS",
+    "description": "A double-strength herbal supplement used to improve liver health and function. It helps protect the liver from damage.",
+    "price": "150.00",
+    "image": "medicines/medi_16_dcGntTK.png",
+    "category": "Liver"
+  }
+},
+{
+  "model": "home.medicine",
+  "pk": 25,
+  "fields": {
+    "name": "Anaflam TH4",
+    "description": "A combination medicine used to relieve pain and inflammation associated with muscle spasms and joint conditions.",
+    "price": "190.00",
+    "image": "medicines/medi_17_68kfjnc.png",
+    "category": "Muscle"
+  }
+},
+{
+  "model": "home.medicine",
+  "pk": 26,
+  "fields": {
+    "name": "Pyrigesic MR",
+    "description": "A muscle relaxant used to treat pain, stiffness, and inflammation caused by muscle injuries.",
+    "price": "155.00",
+    "image": "medicines/medi_18_YYM6kEZ.png",
+    "category": "Muscle"
+  }
+},
+{
+  "model": "home.medicine",
+  "pk": 27,
+  "fields": {
+    "name": "SignoFlam TH4",
+    "description": "Used to relieve pain and stiffness in muscles and joints, particularly in conditions like sprains and strains.",
+    "price": "200.00",
+    "image": "medicines/medi_19_u1nmsrh.png",
+    "category": "Muscle"
+  }
+},
+{
+  "model": "home.medicine",
+  "pk": 28,
+  "fields": {
+    "name": "Myoril",
+    "description": "A medicine that treats muscle pain and stiffness caused by sprains and strains.",
+    "price": "185.00",
+    "image": "medicines/medi_20_jLmfbAm.png",
+    "category": "Muscle"
+  }
+},
+{
+  "model": "home.medicine",
+  "pk": 29,
+  "fields": {
+    "name": "Ramistar 2.5",
+    "description": "Used to treat high blood pressure and reduce the risk of kidney problems in people with diabetes or high blood pressure.",
+    "price": "115.00",
+    "image": "medicines/medi_21_csZuslz.png",
+    "category": "Kidney"
+  }
+},
+{
+  "model": "home.medicine",
+  "pk": 30,
+  "fields": {
+    "name": "Losar-50",
+    "description": "A medicine used to treat high blood pressure and protect the kidneys from damage in people with diabetes.",
+    "price": "95.00",
+    "image": "medicines/medi_22_MUWe2jy.png",
+    "category": "Kidney"
+  }
+},
+{
+  "model": "home.medicine",
+  "pk": 31,
+  "fields": {
+    "name": "Anfoe 10000 IU",
+    "description": "An injection used to treat anemia associated with chronic kidney disease by helping the body produce more red blood cells.",
+    "price": "2500.00",
+    "image": "medicines/medi_23_HpOigE3.png",
+    "category": "Kidney"
+  }
+},
+{
+  "model": "home.medicine",
+  "pk": 32,
+  "fields": {
+    "name": "Lobun Forte",
+    "description": "A probiotic capsule that helps reduce the buildup of toxins in the blood and supports kidney health",
+    "price": "320.00",
+    "image": "medicines/medi_24_Xrqb0S6.png",
+    "category": "Kidney"
+  }
+},
+{
+  "model": "home.medicine",
+  "pk": 33,
+  "fields": {
+    "name": "Acne Star Gel",
+    "description": "A clinically tested gel that reduces blackheads, whiteheads, and inflammatory lesions to combat acne and minimize oiliness",
+    "price": "120.00",
+    "image": "medicines/medi_25_dzTDo31.png",
+    "category": "Derma"
+  }
+},
+{
+  "model": "home.medicine",
+  "pk": 34,
+  "fields": {
+    "name": "Minimalist Salicylic Acid 02%",
+    "description": "A face serum designed to reduce oil, acne, and blackheads, especially for acne-prone skin.",
+    "price": "500.00",
+    "image": "medicines/medi_26_WmHHp0t.png",
+    "category": "Derma"
+  }
+},
+{
+  "model": "home.medicine",
+  "pk": 35,
+  "fields": {
+    "name": "Deriva-CMS Gel",
+    "description": "A topical gel used to treat acne. It contains Adapalene and Clindamycin Phosphate to reduce inflammation and fight bacteria",
+    "price": "150.00",
+    "image": "medicines/medi_27_mJ5fpx4.png",
+    "category": "Derma"
+  }
+},
+{
+  "model": "home.medicine",
+  "pk": 36,
+  "fields": {
+    "name": "Cetaphil Oily Skin Cleanser",
+    "description": "A dermatologist-recommended cleanser for oily and sensitive skin. It deeply cleanses and helps minimize pores.",
+    "price": "450.00",
+    "image": "medicines/medi_28_YZXkF9x.png",
+    "category": "Derma"
+  }
+},
+{
+  "model": "home.medicine",
+  "pk": 38,
+  "fields": {
+    "name": "Lubistar-0.5%",
+    "description": "Eye drops that work as a tear substitute to relieve the symptoms of dry eyes, such as dryness and irritation",
+    "price": "110.00",
+    "image": "medicines/medi_29_k0UQPk0.png",
+    "category": "Eye"
+  }
+},
+{
+  "model": "home.medicine",
+  "pk": 39,
+  "fields": {
+    "name": "Nutranext Opticare",
+    "description": "A dietary supplement that provides nutritional support to maintain healthy eyes and good vision.",
+    "price": "450.00",
+    "image": "medicines/medi_30_rHBPcs2.png",
+    "category": "Eye"
+  }
+},
+{
+  "model": "home.medicine",
+  "pk": 40,
+  "fields": {
+    "name": "Refresh Tears",
+    "description": "A solution that helps soothe dry, irritated eyes by providing long-lasting moisture and relief from discomfort",
+    "price": "200.00",
+    "image": "medicines/medi_31_lfWo7RT.png",
+    "category": "Eye"
+  }
+},
+{
+  "model": "home.medicine",
+  "pk": 41,
+  "fields": {
+    "name": "Eyemist",
+    "description": "Lubricating eye drops used to treat dry eyes. It provides soothing relief from burning, irritation, and discomfort.",
+    "price": "150.00",
+    "image": "medicines/medi_32_3ufeVAV.png",
+    "category": "Eye"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add log entry",
+    "content_type": [
+      "admin",
+      "logentry"
+    ],
+    "codename": "add_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change log entry",
+    "content_type": [
+      "admin",
+      "logentry"
+    ],
+    "codename": "change_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete log entry",
+    "content_type": [
+      "admin",
+      "logentry"
+    ],
+    "codename": "delete_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view log entry",
+    "content_type": [
+      "admin",
+      "logentry"
+    ],
+    "codename": "view_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add permission",
+    "content_type": [
+      "auth",
+      "permission"
+    ],
+    "codename": "add_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change permission",
+    "content_type": [
+      "auth",
+      "permission"
+    ],
+    "codename": "change_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete permission",
+    "content_type": [
+      "auth",
+      "permission"
+    ],
+    "codename": "delete_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view permission",
+    "content_type": [
+      "auth",
+      "permission"
+    ],
+    "codename": "view_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add group",
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "codename": "add_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change group",
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "codename": "change_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete group",
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "codename": "delete_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view group",
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "codename": "view_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add user",
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "codename": "add_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change user",
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "codename": "change_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete user",
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "codename": "delete_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view user",
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "codename": "view_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add content type",
+    "content_type": [
+      "contenttypes",
+      "contenttype"
+    ],
+    "codename": "add_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change content type",
+    "content_type": [
+      "contenttypes",
+      "contenttype"
+    ],
+    "codename": "change_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete content type",
+    "content_type": [
+      "contenttypes",
+      "contenttype"
+    ],
+    "codename": "delete_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view content type",
+    "content_type": [
+      "contenttypes",
+      "contenttype"
+    ],
+    "codename": "view_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add session",
+    "content_type": [
+      "sessions",
+      "session"
+    ],
+    "codename": "add_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change session",
+    "content_type": [
+      "sessions",
+      "session"
+    ],
+    "codename": "change_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete session",
+    "content_type": [
+      "sessions",
+      "session"
+    ],
+    "codename": "delete_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view session",
+    "content_type": [
+      "sessions",
+      "session"
+    ],
+    "codename": "view_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add signup user",
+    "content_type": [
+      "home",
+      "signupuser"
+    ],
+    "codename": "add_signupuser"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change signup user",
+    "content_type": [
+      "home",
+      "signupuser"
+    ],
+    "codename": "change_signupuser"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete signup user",
+    "content_type": [
+      "home",
+      "signupuser"
+    ],
+    "codename": "delete_signupuser"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view signup user",
+    "content_type": [
+      "home",
+      "signupuser"
+    ],
+    "codename": "view_signupuser"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add medicine",
+    "content_type": [
+      "home",
+      "medicine"
+    ],
+    "codename": "add_medicine"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change medicine",
+    "content_type": [
+      "home",
+      "medicine"
+    ],
+    "codename": "change_medicine"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete medicine",
+    "content_type": [
+      "home",
+      "medicine"
+    ],
+    "codename": "delete_medicine"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view medicine",
+    "content_type": [
+      "home",
+      "medicine"
+    ],
+    "codename": "view_medicine"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add cart",
+    "content_type": [
+      "home",
+      "cart"
+    ],
+    "codename": "add_cart"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change cart",
+    "content_type": [
+      "home",
+      "cart"
+    ],
+    "codename": "change_cart"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete cart",
+    "content_type": [
+      "home",
+      "cart"
+    ],
+    "codename": "delete_cart"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view cart",
+    "content_type": [
+      "home",
+      "cart"
+    ],
+    "codename": "view_cart"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add site",
+    "content_type": [
+      "sites",
+      "site"
+    ],
+    "codename": "add_site"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change site",
+    "content_type": [
+      "sites",
+      "site"
+    ],
+    "codename": "change_site"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete site",
+    "content_type": [
+      "sites",
+      "site"
+    ],
+    "codename": "delete_site"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view site",
+    "content_type": [
+      "sites",
+      "site"
+    ],
+    "codename": "view_site"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add PayPal IPN",
+    "content_type": [
+      "ipn",
+      "paypalipn"
+    ],
+    "codename": "add_paypalipn"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change PayPal IPN",
+    "content_type": [
+      "ipn",
+      "paypalipn"
+    ],
+    "codename": "change_paypalipn"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete PayPal IPN",
+    "content_type": [
+      "ipn",
+      "paypalipn"
+    ],
+    "codename": "delete_paypalipn"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view PayPal IPN",
+    "content_type": [
+      "ipn",
+      "paypalipn"
+    ],
+    "codename": "view_paypalipn"
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$Uwjxj4iY1IuZOitsEILqNh$mm9uM4PEebtD0L9cvzDX9GZL5inQBTJMzya9do8GkXg=",
+    "last_login": "2025-09-28T11:23:44.227Z",
+    "is_superuser": true,
+    "username": "Hamzah",
+    "first_name": "",
+    "last_name": "",
+    "email": "hamzah.2004saiyed@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2025-09-22T19:29:08.329Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$AopJs1kbNwOxvWXzhehIqg$60prD31UhM2k0Cn6tHmGMSf1m2qcb2UYsNWLMn4sdhY=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "hii123@gmail.com",
+    "first_name": "Hamzah",
+    "last_name": "",
+    "email": "hii123@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-09-22T20:57:47.635Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$SKK9YSkRZL01SICabiltPC$lsZqmFY4zOXVluUwCNqII8vB0TTzc39BxzJ382HM4Ac=",
+    "last_login": "2025-09-23T16:57:55.692Z",
+    "is_superuser": false,
+    "username": "hello@gmail.com",
+    "first_name": "khush",
+    "last_name": "",
+    "email": "hello@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-09-22T20:58:58.850Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$nILyCNpe8AKtTXILCUamIi$Sqb8NI43j95d0bP6nhCZ/GVQZVeFdxUTvZizjcGHBN8=",
+    "last_login": "2025-09-23T11:26:44.236Z",
+    "is_superuser": false,
+    "username": "naman123@gmail.com",
+    "first_name": "Naman",
+    "last_name": "",
+    "email": "naman123@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-09-23T07:34:54.916Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$mzUPs538MnUCSZ46vW5ZcR$eGcr62CAICxGHqxeUS0x9fYrHih2QHcsTQZoSo97Fdw=",
+    "last_login": "2025-09-28T11:15:37.570Z",
+    "is_superuser": false,
+    "username": "hamzah.2004saiyed@gmail.com",
+    "first_name": "Hamzah",
+    "last_name": "",
+    "email": "hamzah.2004saiyed@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-09-23T18:48:29.548Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$5tHichdHGOZXLVeyfc6CB0$QLWEHmombl0envgDmkvnsHvSmYdd3Y2Tp7kj1l8YoWU=",
+    "last_login": "2025-09-23T20:33:07.092Z",
+    "is_superuser": false,
+    "username": "ex123@gmail.com",
+    "first_name": "example",
+    "last_name": "",
+    "email": "ex123@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-09-23T20:32:57.321Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$Cd1PTq0EegFBaJCITCr1VO$DVfpyG8l8lMoGNnMJIf2kOGzpby90kl07L5yMjj23ik=",
+    "last_login": "2025-09-23T20:34:52.954Z",
+    "is_superuser": false,
+    "username": "test123@gmail.com",
+    "first_name": "tester",
+    "last_name": "",
+    "email": "test123@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-09-23T20:34:43.882Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$1veaJySbj70FO6rA4JrB80$ijXhSgP5bcuArWinyB/G9ojALirSmLr6ByAeHHBLMYk=",
+    "last_login": "2025-09-24T03:00:38.084Z",
+    "is_superuser": false,
+    "username": "kh123@gmail.com",
+    "first_name": "khush",
+    "last_name": "",
+    "email": "kh123@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-09-24T03:00:28.646Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "home.cart",
+  "pk": 43,
+  "fields": {
+    "user": [
+      "hello@gmail.com"
+    ],
+    "medicine": 1,
+    "quantity": 1
+  }
+},
+{
+  "model": "home.cart",
+  "pk": 44,
+  "fields": {
+    "user": [
+      "hello@gmail.com"
+    ],
+    "medicine": 34,
+    "quantity": 1
+  }
+},
+{
+  "model": "home.cart",
+  "pk": 45,
+  "fields": {
+    "user": [
+      "hello@gmail.com"
+    ],
+    "medicine": 30,
+    "quantity": 2
+  }
+},
+{
+  "model": "home.cart",
+  "pk": 77,
+  "fields": {
+    "user": [
+      "Hamzah"
+    ],
+    "medicine": 34,
+    "quantity": 2
+  }
+},
+{
+  "model": "home.cart",
+  "pk": 89,
+  "fields": {
+    "user": [
+      "Hamzah"
+    ],
+    "medicine": 29,
+    "quantity": 1
+  }
+},
+{
+  "model": "home.cart",
+  "pk": 110,
+  "fields": {
+    "user": [
+      "hamzah.2004saiyed@gmail.com"
+    ],
+    "medicine": 34,
+    "quantity": 2
+  }
+},
+{
+  "model": "home.cart",
+  "pk": 111,
+  "fields": {
+    "user": [
+      "hamzah.2004saiyed@gmail.com"
+    ],
+    "medicine": 36,
+    "quantity": 2
+  }
+},
+{
+  "model": "home.cart",
+  "pk": 112,
+  "fields": {
+    "user": [
+      "hamzah.2004saiyed@gmail.com"
+    ],
+    "medicine": 33,
+    "quantity": 1
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 1,
+  "fields": {
+    "action_time": "2025-09-22T19:38:52.338Z",
+    "user": [
+      "Hamzah"
+    ],
+    "content_type": [
+      "home",
+      "medicine"
+    ],
+    "object_id": "1",
+    "object_repr": "Glycomet",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 2,
+  "fields": {
+    "action_time": "2025-09-22T19:40:24.871Z",
+    "user": [
+      "Hamzah"
+    ],
+    "content_type": [
+      "home",
+      "medicine"
+    ],
+    "object_id": "2",
+    "object_repr": "Lantus Cartridge",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 3,
+  "fields": {
+    "action_time": "2025-09-22T19:42:06.243Z",
+    "user": [
+      "Hamzah"
+    ],
+    "content_type": [
+      "home",
+      "medicine"
+    ],
+    "object_id": "3",
+    "object_repr": "Glucored Forte",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 4,
+  "fields": {
+    "action_time": "2025-09-22T19:43:15.542Z",
+    "user": [
+      "Hamzah"
+    ],
+    "content_type": [
+      "home",
+      "medicine"
+    ],
+    "object_id": "4",
+    "object_repr": "Galvus Met",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 5,
+  "fields": {
+    "action_time": "2025-09-22T19:56:22.688Z",
+    "user": [
+      "Hamzah"
+    ],
+    "content_type": [
+      "home",
+      "medicine"
+    ],
+    "object_id": "4",
+    "object_repr": "Galvus Met",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Description\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 6,
+  "fields": {
+    "action_time": "2025-09-22T19:56:54.505Z",
+    "user": [
+      "Hamzah"
+    ],
+    "content_type": [
+      "home",
+      "medicine"
+    ],
+    "object_id": "4",
+    "object_repr": "Galvus Met",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 7,
+  "fields": {
+    "action_time": "2025-09-22T19:57:42.327Z",
+    "user": [
+      "Hamzah"
+    ],
+    "content_type": [
+      "home",
+      "medicine"
+    ],
+    "object_id": "2",
+    "object_repr": "Lantus Cartridge",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Description\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 8,
+  "fields": {
+    "action_time": "2025-09-22T19:58:32.359Z",
+    "user": [
+      "Hamzah"
+    ],
+    "content_type": [
+      "home",
+      "medicine"
+    ],
+    "object_id": "3",
+    "object_repr": "Glucored Forte",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Description\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 9,
+  "fields": {
+    "action_time": "2025-09-22T19:58:57.212Z",
+    "user": [
+      "Hamzah"
+    ],
+    "content_type": [
+      "home",
+      "medicine"
+    ],
+    "object_id": "4",
+    "object_repr": "Galvus Met",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Description\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 10,
+  "fields": {
+    "action_time": "2025-09-22T20:30:26.417Z",
+    "user": [
+      "Hamzah"
+    ],
+    "content_type": [
+      "home",
+      "medicine"
+    ],
+    "object_id": "5",
+    "object_repr": "Amlokind-AT",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 11,
+  "fields": {
+    "action_time": "2025-09-22T20:31:36.723Z",
+    "user": [
+      "Hamzah"
+    ],
+    "content_type": [
+      "home",
+      "medicine"
+    ],
+    "object_id": "6",
+    "object_repr": "Cardace 2.5",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 12,
+  "fields": {
+    "action_time": "2025-09-22T20:32:27.093Z",
+    "user": [
+      "Hamzah"
+    ],
+    "content_type": [
+      "home",
+      "medicine"
+    ],
+    "object_id": "7",
+    "object_repr": "Clopitab",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 13,
+  "fields": {
+    "action_time": "2025-09-22T20:32:51.094Z",
+    "user": [
+      "Hamzah"
+    ],
+    "content_type": [
+      "home",
+      "medicine"
+    ],
+    "object_id": "8",
+    "object_repr": "Atorva 10",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 14,
+  "fields": {
+    "action_time": "2025-09-23T06:14:40.304Z",
+    "user": [
+      "Hamzah"
+    ],
+    "content_type": [
+      "home",
+      "medicine"
+    ],
+    "object_id": "9",
+    "object_repr": "Glycomet",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 15,
+  "fields": {
+    "action_time": "2025-09-23T06:15:30.332Z",
+    "user": [
+      "Hamzah"
+    ],
+    "content_type": [
+      "home",
+      "medicine"
+    ],
+    "object_id": "10",
+    "object_repr": "Lantus Cartridge",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 16,
+  "fields": {
+    "action_time": "2025-09-23T06:16:09.716Z",
+    "user": [
+      "Hamzah"
+    ],
+    "content_type": [
+      "home",
+      "medicine"
+    ],
+    "object_id": "11",
+    "object_repr": "Glucored Forte",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 17,
+  "fields": {
+    "action_time": "2025-09-23T06:16:52.116Z",
+    "user": [
+      "Hamzah"
+    ],
+    "content_type": [
+      "home",
+      "medicine"
+    ],
+    "object_id": "12",
+    "object_repr": "Galvus Met",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 18,
+  "fields": {
+    "action_time": "2025-09-23T06:38:48.607Z",
+    "user": [
+      "Hamzah"
+    ],
+    "content_type": [
+      "home",
+      "medicine"
+    ],
+    "object_id": "13",
+    "object_repr": "Amlokind-AT",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 19,
+  "fields": {
+    "action_time": "2025-09-23T06:39:27.583Z",
+    "user": [
+      "Hamzah"
+    ],
+    "content_type": [
+      "home",
+      "medicine"
+    ],
+    "object_id": "14",
+    "object_repr": "Cardace 2.5",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 20,
+  "fields": {
+    "action_time": "2025-09-23T06:40:03.682Z",
+    "user": [
+      "Hamzah"
+    ],
+    "content_type": [
+      "home",
+      "medicine"
+    ],
+    "object_id": "15",
+    "object_repr": "Clopitab",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 21,
+  "fields": {
+    "action_time": "2025-09-23T06:40:42.592Z",
+    "user": [
+      "Hamzah"
+    ],
+    "content_type": [
+      "home",
+      "medicine"
+    ],
+    "object_id": "16",
+    "object_repr": "Atorva 10",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 22,
+  "fields": {
+    "action_time": "2025-09-23T06:44:40.071Z",
+    "user": [
+      "Hamzah"
+    ],
+    "content_type": [
+      "home",
+      "medicine"
+    ],
+    "object_id": "17",
+    "object_repr": "Digene",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 23,
+  "fields": {
+    "action_time": "2025-09-23T06:45:18.314Z",
+    "user": [
+      "Hamzah"
+    ],
+    "content_type": [
+      "home",
+      "medicine"
+    ],
+    "object_id": "18",
+    "object_repr": "Rantac 150",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 24,
+  "fields": {
+    "action_time": "2025-09-23T06:45:58.228Z",
+    "user": [
+      "Hamzah"
+    ],
+    "content_type": [
+      "home",
+      "medicine"
+    ],
+    "object_id": "19",
+    "object_repr": "Junior Lanzol",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 25,
+  "fields": {
+    "action_time": "2025-09-23T06:47:07.996Z",
+    "user": [
+      "Hamzah"
+    ],
+    "content_type": [
+      "home",
+      "medicine"
+    ],
+    "object_id": "20",
+    "object_repr": "Pan 40",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 26,
+  "fields": {
+    "action_time": "2025-09-23T06:49:09.389Z",
+    "user": [
+      "Hamzah"
+    ],
+    "content_type": [
+      "home",
+      "medicine"
+    ],
+    "object_id": "21",
+    "object_repr": "Synertab",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 27,
+  "fields": {
+    "action_time": "2025-09-23T06:49:44.365Z",
+    "user": [
+      "Hamzah"
+    ],
+    "content_type": [
+      "home",
+      "medicine"
+    ],
+    "object_id": "22",
+    "object_repr": "Udiliv 300",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 28,
+  "fields": {
+    "action_time": "2025-09-23T06:50:15.505Z",
+    "user": [
+      "Hamzah"
+    ],
+    "content_type": [
+      "home",
+      "medicine"
+    ],
+    "object_id": "23",
+    "object_repr": "HepaMerz",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 29,
+  "fields": {
+    "action_time": "2025-09-23T06:50:44.147Z",
+    "user": [
+      "Hamzah"
+    ],
+    "content_type": [
+      "home",
+      "medicine"
+    ],
+    "object_id": "24",
+    "object_repr": "Liv.52 DS",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 30,
+  "fields": {
+    "action_time": "2025-09-23T06:58:33.197Z",
+    "user": [
+      "Hamzah"
+    ],
+    "content_type": [
+      "home",
+      "medicine"
+    ],
+    "object_id": "25",
+    "object_repr": "Anaflam TH4",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 31,
+  "fields": {
+    "action_time": "2025-09-23T06:59:05.031Z",
+    "user": [
+      "Hamzah"
+    ],
+    "content_type": [
+      "home",
+      "medicine"
+    ],
+    "object_id": "26",
+    "object_repr": "Pyrigesic MR",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 32,
+  "fields": {
+    "action_time": "2025-09-23T06:59:33.380Z",
+    "user": [
+      "Hamzah"
+    ],
+    "content_type": [
+      "home",
+      "medicine"
+    ],
+    "object_id": "27",
+    "object_repr": "SignoFlam TH4",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 33,
+  "fields": {
+    "action_time": "2025-09-23T07:00:52.688Z",
+    "user": [
+      "Hamzah"
+    ],
+    "content_type": [
+      "home",
+      "medicine"
+    ],
+    "object_id": "28",
+    "object_repr": "Myoril",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 34,
+  "fields": {
+    "action_time": "2025-09-23T09:40:13.769Z",
+    "user": [
+      "Hamzah"
+    ],
+    "content_type": [
+      "home",
+      "medicine"
+    ],
+    "object_id": "29",
+    "object_repr": "Ramistar 2.5",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 35,
+  "fields": {
+    "action_time": "2025-09-23T09:40:51.341Z",
+    "user": [
+      "Hamzah"
+    ],
+    "content_type": [
+      "home",
+      "medicine"
+    ],
+    "object_id": "30",
+    "object_repr": "Losar-50",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 36,
+  "fields": {
+    "action_time": "2025-09-23T09:41:46.774Z",
+    "user": [
+      "Hamzah"
+    ],
+    "content_type": [
+      "home",
+      "medicine"
+    ],
+    "object_id": "31",
+    "object_repr": "Anfoe 10000 IU",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 37,
+  "fields": {
+    "action_time": "2025-09-23T09:42:18.406Z",
+    "user": [
+      "Hamzah"
+    ],
+    "content_type": [
+      "home",
+      "medicine"
+    ],
+    "object_id": "32",
+    "object_repr": "Lobun Forte",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 38,
+  "fields": {
+    "action_time": "2025-09-23T09:52:38.575Z",
+    "user": [
+      "Hamzah"
+    ],
+    "content_type": [
+      "home",
+      "medicine"
+    ],
+    "object_id": "33",
+    "object_repr": "Acne Star Gel",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 39,
+  "fields": {
+    "action_time": "2025-09-23T09:53:23.998Z",
+    "user": [
+      "Hamzah"
+    ],
+    "content_type": [
+      "home",
+      "medicine"
+    ],
+    "object_id": "34",
+    "object_repr": "Minimalist Salicylic Acid 02%",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 40,
+  "fields": {
+    "action_time": "2025-09-23T09:53:58.207Z",
+    "user": [
+      "Hamzah"
+    ],
+    "content_type": [
+      "home",
+      "medicine"
+    ],
+    "object_id": "35",
+    "object_repr": "Deriva-CMS Gel",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 41,
+  "fields": {
+    "action_time": "2025-09-23T09:54:38.051Z",
+    "user": [
+      "Hamzah"
+    ],
+    "content_type": [
+      "home",
+      "medicine"
+    ],
+    "object_id": "36",
+    "object_repr": "Cetaphil Oily Skin Cleanser",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 42,
+  "fields": {
+    "action_time": "2025-09-23T09:57:39.134Z",
+    "user": [
+      "Hamzah"
+    ],
+    "content_type": [
+      "home",
+      "medicine"
+    ],
+    "object_id": "37",
+    "object_repr": "Deriva-CMS Gel",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 43,
+  "fields": {
+    "action_time": "2025-09-23T09:58:26.128Z",
+    "user": [
+      "Hamzah"
+    ],
+    "content_type": [
+      "home",
+      "medicine"
+    ],
+    "object_id": "37",
+    "object_repr": "Deriva-CMS Gel",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 44,
+  "fields": {
+    "action_time": "2025-09-23T09:58:58.335Z",
+    "user": [
+      "Hamzah"
+    ],
+    "content_type": [
+      "home",
+      "medicine"
+    ],
+    "object_id": "35",
+    "object_repr": "Deriva-CMS Gel",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 45,
+  "fields": {
+    "action_time": "2025-09-23T09:59:05.567Z",
+    "user": [
+      "Hamzah"
+    ],
+    "content_type": [
+      "home",
+      "medicine"
+    ],
+    "object_id": "35",
+    "object_repr": "Deriva-CMS Gel",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Category\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 46,
+  "fields": {
+    "action_time": "2025-09-23T10:01:20.851Z",
+    "user": [
+      "Hamzah"
+    ],
+    "content_type": [
+      "home",
+      "medicine"
+    ],
+    "object_id": "38",
+    "object_repr": "Lubistar-0.5%",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 47,
+  "fields": {
+    "action_time": "2025-09-23T10:02:03.804Z",
+    "user": [
+      "Hamzah"
+    ],
+    "content_type": [
+      "home",
+      "medicine"
+    ],
+    "object_id": "39",
+    "object_repr": "Nutranext Opticare",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 48,
+  "fields": {
+    "action_time": "2025-09-23T10:02:33.450Z",
+    "user": [
+      "Hamzah"
+    ],
+    "content_type": [
+      "home",
+      "medicine"
+    ],
+    "object_id": "40",
+    "object_repr": "Refresh Tears",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 49,
+  "fields": {
+    "action_time": "2025-09-23T10:03:11.017Z",
+    "user": [
+      "Hamzah"
+    ],
+    "content_type": [
+      "home",
+      "medicine"
+    ],
+    "object_id": "41",
+    "object_repr": "Eyemist",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 50,
+  "fields": {
+    "action_time": "2025-09-24T12:42:06.872Z",
+    "user": [
+      "Hamzah"
+    ],
+    "content_type": [
+      "home",
+      "medicine"
+    ],
+    "object_id": "29",
+    "object_repr": "Ramistar 2.5",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 51,
+  "fields": {
+    "action_time": "2025-09-24T12:44:00.203Z",
+    "user": [
+      "Hamzah"
+    ],
+    "content_type": [
+      "home",
+      "medicine"
+    ],
+    "object_id": "42",
+    "object_repr": "Ramistar 2.5",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 52,
+  "fields": {
+    "action_time": "2025-09-24T12:44:18.936Z",
+    "user": [
+      "Hamzah"
+    ],
+    "content_type": [
+      "home",
+      "medicine"
+    ],
+    "object_id": "42",
+    "object_repr": "Ramistar 2.5",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 53,
+  "fields": {
+    "action_time": "2025-09-24T12:54:17.504Z",
+    "user": [
+      "Hamzah"
+    ],
+    "content_type": [
+      "home",
+      "medicine"
+    ],
+    "object_id": "17",
+    "object_repr": "Digene",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+}
+]
