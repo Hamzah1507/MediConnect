@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 # ======================================================================
 # === LOAD ENVIRONMENT VARIABLES (CRITICAL) ===
 # Load variables from the .env file at the project root
-load_dotenv() 
+load_dotenv()
 # ======================================================================
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
