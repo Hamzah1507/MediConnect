@@ -1,7 +1,6 @@
 import os
 from pathlib import Path
 from dotenv import load_dotenv
-
 # ======================================================================
 # === LOAD ENVIRONMENT VARIABLES (CRITICAL) ===
 # Load variables from the .env file at the project root
