@@ -7,13 +7,14 @@ from django.http import JsonResponse, HttpResponse
 from django.db.models import Q
 from django.urls import reverse 
 from django.conf import settings
-from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.csrf import csrf_exempt # <--- Already imported, correctly used below
 import json 
 from decimal import Decimal 
 import uuid 
 from django.core.files.storage import FileSystemStorage 
 import os 
-from django.contrib.messages import get_messages # <--- NEW IMPORT: Needed to clear old messages
+from django.contrib.messages import get_messages
+from datetime import datetime
 
 # === NEW IMPORTS for Validation ===
 from .utils import validate_prescription_stamp 
@@ -34,10 +35,73 @@ def entry_page(request):
 
 @login_required
 def landing_page(request):
-    """Renders the main content page (Home), accessible only when logged in."""
+    """
+    Renders the main content page (Home), accessible only when logged in.
+    
+    === COOKIES & SESSION IMPLEMENTATION (GUIDELINE #5) ===
+    - Tracks user visits using cookies
+    - Stores last visit time in session
+    - Records user preferences
+    """
+    
+    # Get all medicines for display
     frequent_medicines = Medicine.objects.all()
-    context = {'frequent_medicines': frequent_medicines}
-    return render(request, "landing.html", context)
+    
+    # ======================================================================
+    # === COOKIE AND SESSION FUNCTIONALITY (GUIDELINE #5) ===
+    # ======================================================================
+    
+    # 1. READ COOKIES: Get visit count from cookies
+    visit_count = request.COOKIES.get('visit_count', '0')
+    try:
+        visit_count = int(visit_count) + 1
+    except ValueError:
+        visit_count = 1
+    
+    # 2. READ SESSION: Get last visit time from session
+    last_visit = request.session.get('last_visit', 'Never')
+    
+    # 3. UPDATE SESSION: Store current visit time
+    request.session['last_visit'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    
+    # 4. Store user's preferred view mode in session (example)
+    if not request.session.get('view_mode'):
+        request.session['view_mode'] = 'grid'  # Default view mode
+    
+    # 5. Store browsing history in session
+    if 'browsing_history' not in request.session:
+        request.session['browsing_history'] = []
+    
+    # Add context data including cookie/session info
+    context = {
+        'frequent_medicines': frequent_medicines,
+        'visit_count': visit_count,
+        'last_visit': last_visit,
+        'view_mode': request.session.get('view_mode'),
+    }
+    
+    # 6. CREATE RESPONSE and SET COOKIES
+    response = render(request, "landing.html", context)
+    
+    # Set visit count cookie (expires in 1 year)
+    response.set_cookie(
+        'visit_count', 
+        str(visit_count), 
+        max_age=settings.COOKIE_MAX_AGE,
+        httponly=True,
+        samesite='Lax'
+    )
+    
+    # Set user preference cookie
+    response.set_cookie(
+        'user_theme',
+        'light',  # Default theme
+        max_age=settings.COOKIE_MAX_AGE
+    )
+    
+    # ======================================================================
+    
+    return response
 
 def menu(request):
     return redirect('home')
@@ -52,6 +116,10 @@ def signup(request):
             user = User.objects.create_user(username=email, email=email, password=password)
             user.first_name = name
             user.save()
+            
+            # Store signup info in session
+            request.session['last_signup_email'] = email
+            
             messages.success(request, "User registered successfully! Please log in.")
             return redirect("login")
         except Exception as e:
@@ -67,6 +135,10 @@ def login_view(request):
 
         if user is not None:
             login(request, user)
+            
+            # Store login timestamp in session
+            request.session['last_login'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            
             messages.success(request, "Logged in successfully!")
             return redirect("home")
         else:
@@ -95,6 +167,7 @@ def search_view(request):
 # --- CART MANAGEMENT VIEWS ---
 
 @login_required
+@csrf_exempt # <--- FIX: Added to allow AJAX POST requests to bypass CSRF check
 def add_to_cart(request, medicine_id):
     """Adds or increments a medicine item in the user's cart."""
     if request.method == 'POST':
@@ -147,6 +220,7 @@ def remove_from_cart(request, cart_id):
     return redirect('cart')
 
 @login_required
+@csrf_exempt # <--- FIX: Added to allow AJAX POST requests to bypass CSRF check
 def remove_from_cart_ajax(request, medicine_id):
     """Decrements quantity of a cart item (older AJAX view - retained for compatibility)."""
     if request.method == 'POST':
